@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/sindresorhus/gulp-autoprefixer#readme"
-
-    >gulp-autoprefixer (v3.1.1)</a>
+    <a href="https://github.com/sindresorhus/gulp-autoprefixer#readme">gulp-autoprefixer (v3.1.1)</a>
 </h1>
 <h4>Prefix CSS</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-autoprefixer">module gulp-autoprefixer</a><ol>
 
@@ -93,7 +86,7 @@
 		}
 
 		if (file.isStream()) {
-			cb(new gutil.PluginError(&#x27;gulp-autoprefixer&#x27;, &#x27;Streaming not supported&#x27;));
+			cb(new gutil.PluginError('gulp-autoprefixer', 'Streaming not supported'));
 			return;
 		}
 
@@ -104,26 +97,26 @@
 		}).then(function (res) {
 			file.contents = new Buffer(res.css);
 
-			if (res.map &#x26;&#x26; file.sourceMap) {
+			if (res.map &amp;&amp; file.sourceMap) {
 				applySourceMap(file, res.map.toString());
 			}
 
 			var warnings = res.warnings();
 
-			if (warnings.length &#x3e; 0) {
-				gutil.log(&#x27;gulp-autoprefixer:&#x27;, &#x27;\n  &#x27; + warnings.join(&#x27;\n  &#x27;));
+			if (warnings.length &gt; 0) {
+				gutil.log('gulp-autoprefixer:', '\n  ' + warnings.join('\n  '));
 			}
 
 			setImmediate(cb, null, file);
 		}).catch(function (err) {
-			var cssError = err.name === &#x27;CssSyntaxError&#x27;;
+			var cssError = err.name === 'CssSyntaxError';
 
 			if (cssError) {
 				err.message += err.showSourceCode();
 			}
 
 			// prevent stream unhandled exception from being suppressed by Promise
-			setImmediate(cb, new gutil.PluginError(&#x27;gulp-autoprefixer&#x27;, err, {
+			setImmediate(cb, new gutil.PluginError('gulp-autoprefixer', err, {
 				fileName: file.path,
 				showStack: !cssError
 			}));
@@ -142,3 +135,4 @@
     ]
 </div>
 </div>
+</body></html>

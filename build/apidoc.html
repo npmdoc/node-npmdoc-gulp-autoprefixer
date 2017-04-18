@@ -61,12 +61,78 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-autoprefixer">module gulp-autoprefixer</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-autoprefixer.gulp-autoprefixer">
+            function <span class="apidocSignatureSpan"></span>gulp-autoprefixer
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.gulp-autoprefixer" id="apidoc.module.gulp-autoprefixer">module gulp-autoprefixer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-autoprefixer.gulp-autoprefixer" id="apidoc.element.gulp-autoprefixer.gulp-autoprefixer">
+        function <span class="apidocSignatureSpan"></span>gulp-autoprefixer
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">gulp-autoprefixer = function (opts) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new gutil.PluginError(&#x27;gulp-autoprefixer&#x27;, &#x27;Streaming not supported&#x27;));
+			return;
+		}
+
+		postcss(autoprefixer(opts)).process(file.contents.toString(), {
+			map: file.sourceMap ? {annotation: false} : false,
+			from: file.path,
+			to: file.path
+		}).then(function (res) {
+			file.contents = new Buffer(res.css);
+
+			if (res.map &#x26;&#x26; file.sourceMap) {
+				applySourceMap(file, res.map.toString());
+			}
+
+			var warnings = res.warnings();
+
+			if (warnings.length &#x3e; 0) {
+				gutil.log(&#x27;gulp-autoprefixer:&#x27;, &#x27;\n  &#x27; + warnings.join(&#x27;\n  &#x27;));
+			}
+
+			setImmediate(cb, null, file);
+		}).catch(function (err) {
+			var cssError = err.name === &#x27;CssSyntaxError&#x27;;
+
+			if (cssError) {
+				err.message += err.showSourceCode();
+			}
+
+			// prevent stream unhandled exception from being suppressed by Promise
+			setImmediate(cb, new gutil.PluginError(&#x27;gulp-autoprefixer&#x27;, err, {
+				fileName: file.path,
+				showStack: !cssError
+			}));
+		});
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
