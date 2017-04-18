@@ -1,1 +1,39 @@
-{     "devDependencies": {         "gulp-autoprefixer": "*",         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmdoc-gulp-autoprefixer",     "homepage": "https://github.com/npmdoc/node-npmdoc-gulp-autoprefixer",     "repository": {         "type": "git",         "url": "https://github.com/npmdoc/node-npmdoc-gulp-autoprefixer.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "#### api documentation for  [gulp-autoprefixer (v3.1.1)](https://github.com/sindresorhus/gulp-autoprefixer#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-autoprefixer.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-autoprefixer) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-autoprefixer.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-autoprefixer)",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "gulp-autoprefixer": "*",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-gulp-autoprefixer",
+    "keywords": [
+        "documentation",
+        "gulp-autoprefixer"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_gulp_autoprefixer.js",
+    "name": "npmdoc-gulp-autoprefixer",
+    "nameAlias": "npmdoc_gulp_autoprefixer",
+    "nameOriginal": "npmdoc-gulp-autoprefixer",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmdoc/node-npmdoc-gulp-autoprefixer.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "0.0.5"
+}
