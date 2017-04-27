@@ -1,6 +1,6 @@
 # npmdoc-gulp-autoprefixer
 
-#### api documentation for  [gulp-autoprefixer (v3.1.1)](https://github.com/sindresorhus/gulp-autoprefixer#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-autoprefixer.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-autoprefixer) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-autoprefixer.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-autoprefixer)
+#### basic api documentation for  [gulp-autoprefixer (v3.1.1)](https://github.com/sindresorhus/gulp-autoprefixer#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-autoprefixer.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-autoprefixer) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-autoprefixer.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-autoprefixer)
 
 #### Prefix CSS
 
@@ -83,7 +83,8 @@
     "scripts": {
         "test": "xo && mocha"
     },
-    "version": "3.1.1"
+    "version": "3.1.1",
+    "bin": {}
 }
 ```
 
